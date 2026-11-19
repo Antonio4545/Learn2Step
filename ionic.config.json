@@ -1,0 +1,7 @@
+{
+  "name": "Learn2Step",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
