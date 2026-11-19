@@ -1,0 +1,72 @@
+<ion-header class="signup-header">
+  <ion-toolbar>
+    <a class="back-link" routerLink="/home" aria-label="Back to Dance Community">Back</a>
+    <ion-title>Create Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main class="signup-shell">
+    <section class="signup-card" aria-labelledby="signup-heading">
+      <p class="eyebrow">JOIN THE COMMUNITY</p>
+      <h1 id="signup-heading">Your next step starts here.</h1>
+      <p class="intro">Create an account to join the Learn 2 Step dance community.</p>
+
+      <p class="setup-note" *ngIf="!isConfigured" role="status">
+        Supabase is not fully configured yet. Add the project publishable key to the app environment to enable registration.
+      </p>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="field-group">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" formControlName="email" autocomplete="email" inputmode="email" aria-describedby="email-error" />
+          <p class="field-error" id="email-error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+            <span *ngIf="form.controls.email.errors?.['required']">Enter your email address.</span>
+            <span *ngIf="form.controls.email.errors?.['email']">Enter a valid email address.</span>
+          </p>
+        </div>
+
+        <div class="field-group">
+          <label for="signup-username">Display name / username</label>
+          <input id="signup-username" type="text" formControlName="username" autocomplete="username" autocapitalize="none" aria-describedby="username-help username-error" />
+          <p class="field-hint" id="username-help">3–24 characters; letters, numbers, dots, and underscores.</p>
+          <p class="field-hint" *ngIf="form.controls.username.pending">Checking availability…</p>
+          <p class="field-error" id="username-error" *ngIf="form.controls.username.touched && form.controls.username.invalid">
+            <span *ngIf="form.controls.username.errors?.['required']">Choose a username.</span>
+            <span *ngIf="form.controls.username.errors?.['minlength'] || form.controls.username.errors?.['maxlength'] || form.controls.username.errors?.['pattern']">Use 3–24 letters, numbers, dots, or underscores.</span>
+            <span *ngIf="form.controls.username.errors?.['usernameTaken']">That username is already taken.</span>
+            <span *ngIf="form.controls.username.errors?.['usernameCheckFailed']">We couldn’t check availability. Try again.</span>
+          </p>
+        </div>
+
+        <div class="field-group">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" formControlName="password" autocomplete="new-password" aria-describedby="password-strength password-error" />
+          <div class="strength-row" id="password-strength" aria-live="polite">
+            <div class="strength-meter" [attr.data-level]="passwordStrengthLevel"><span></span><span></span><span></span></div>
+            <span>{{ form.controls.password.value ? passwordStrength : 'At least 8 characters' }}</span>
+          </div>
+          <p class="field-error" id="password-error" *ngIf="form.controls.password.touched && form.controls.password.invalid">Use at least 8 characters.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="signup-confirm-password">Confirm password</label>
+          <input id="signup-confirm-password" type="password" formControlName="confirmPassword" autocomplete="new-password" aria-describedby="confirm-password-error" />
+          <p class="field-error" id="confirm-password-error" *ngIf="form.controls.confirmPassword.touched && (form.controls.confirmPassword.invalid || form.errors?.['passwordsMismatch'])">
+            <span *ngIf="form.controls.confirmPassword.errors?.['required']">Confirm your password.</span>
+            <span *ngIf="!form.controls.confirmPassword.errors?.['required'] && form.errors?.['passwordsMismatch']">Passwords do not match.</span>
+          </p>
+        </div>
+
+        <p class="form-error" *ngIf="errorMessage" role="alert">{{ errorMessage }}</p>
+        <p class="form-success" *ngIf="successMessage" role="status">{{ successMessage }}</p>
+
+        <button class="submit-button" type="submit" [disabled]="isSubmitting || form.pending">
+          {{ isSubmitting ? 'Creating account…' : 'Create Account' }}
+        </button>
+      </form>
+
+      <p class="login-prompt">Already have an account? <a routerLink="/login">Log in</a></p>
+    </section>
+  </main>
+</ion-content>

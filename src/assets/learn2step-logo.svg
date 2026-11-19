@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 535 335" fill="none">
+  <defs>
+    <linearGradient id="loop" x1="120" y1="78" x2="418" y2="184" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#370051"/><stop offset=".2" stop-color="#9D00E8"/><stop offset=".34" stop-color="#D43BFF"/><stop offset=".46" stop-color="#550075"/><stop offset=".7" stop-color="#9A00DE"/><stop offset=".87" stop-color="#4A0069"/><stop offset="1" stop-color="#B817F1"/>
+    </linearGradient>
+    <linearGradient id="loop-light" x1="175" y1="63" x2="293" y2="94" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5C4FF"/><stop offset=".36" stop-color="#CB40FF"/><stop offset="1" stop-color="#67008D"/>
+    </linearGradient>
+    <linearGradient id="dancer" x1="291" y1="91" x2="301" y2="193" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/><stop offset=".47" stop-color="#FDF8FF"/><stop offset="1" stop-color="#BB4FEF"/>
+    </linearGradient>
+    <linearGradient id="dancer2" x1="354" y1="98" x2="349" y2="195" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/><stop offset=".45" stop-color="#FFF9FF"/><stop offset="1" stop-color="#C65AF1"/>
+    </linearGradient>
+    <linearGradient id="number" x1="241" y1="205" x2="290" y2="285" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9B9FF"/><stop offset=".3" stop-color="#BC22F5"/><stop offset=".72" stop-color="#8400CD"/><stop offset="1" stop-color="#4A006F"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="97" y1="289" x2="408" y2="287" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6B3700"/><stop offset=".18" stop-color="#FFB728"/><stop offset=".5" stop-color="#FFF08A"/><stop offset=".72" stop-color="#E99A13"/><stop offset="1" stop-color="#6D3900"/>
+    </linearGradient>
+    <filter id="logo-shadow" x="0" y="0" width="535" height="335" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dy="5"/>
+      <feComponentTransfer><feFuncA slope=".8" type="linear"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="small-shadow" x="30" y="160" width="475" height="135" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3.5"/>
+      <feOffset dy="3"/>
+      <feComponentTransfer><feFuncA slope=".8" type="linear"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#logo-shadow)">
+    <!-- Broad elliptical ribbon circling the dancers -->
+    <path d="M274 54C205 46 143 63 117 99c-24 34-5 67 47 85 31 11 74 15 117 10-60 1-113-12-133-35-24-28-1-61 48-79 25-9 55-14 86-15 52 0 112 12 146 36 39 27 34 58-9 83-18 10-39 17-64 21 49-1 92-15 112-39 30-37 0-76-69-99-38-13-83-20-124-20Z" fill="url(#loop)" stroke="#22002F" stroke-width="4"/>
+    <path d="M138 99c21-29 66-45 123-47-36 9-66 24-82 43-20 23-15 44 11 62-48-13-71-34-52-58Z" fill="#D52BFF" opacity=".76"/>
+    <path d="M141 91c25-23 68-36 111-39" stroke="url(#loop-light)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M375 82c35 11 64 28 76 47 15 24 0 46-37 63 30-22 38-42 22-62-12-16-34-31-61-42Z" fill="#CB22FA" opacity=".72"/>
+
+    <!-- Partner silhouettes, kept in front of the ribbon -->
+    <path d="M277 65c-6-4-8-10-6-17 1-4 0-8 1-12 2-8 10-14 19-14 9 0 17 5 20 13 2 4 0 8-1 12l-4 8 2 4-6 3c0 7-4 12-11 15l-3 10c9 9 18 20 24 34l21 40-22 9-27-42-9 30-14 16-17-7 10-52 9-35c3-12 7-22 14-30Z" fill="url(#dancer)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+    <path d="m280 81-20 12-14 26c-3 6-11 8-17 4-5-4-6-10-3-16l16-31c3-7 9-12 16-15l15-8m24 27 17 13 13-21c4-6 11-7 16-3 5 4 5 11 2 16l-18 31c-4 7-13 9-20 5l-20-11" fill="url(#dancer)" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <path d="M335 59c-5-3-8-9-7-15 1-2 0-5 1-8 2-8 9-13 17-13 9 0 16 5 18 13l-1 10-5 6c0 7-5 12-12 14l-3 8c8 10 12 21 14 34l11 47-21 5-17-43-9 38-20-2 8-51c2-15 8-30 17-40l9-13Z" fill="url(#dancer2)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+    <path d="m335 78-18 11-15-10c-5-3-11-1-13 4-2 5 0 10 5 13l22 16c6 4 14 3 19-3l15-18m7-14 13 14 16-7c5-2 10 1 11 6 1 5-2 9-7 11l-22 10c-6 3-13 1-17-4l-15-18" fill="url(#dancer2)" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Skirt and legs -->
+    <path d="m319 129 19-7 24 10 8 47-31 8-30-5 10-32Z" fill="url(#dancer2)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+    <path d="m330 178-21 19m28-17 15 21" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- Ribbon front edge passing under the dancers -->
+    <path d="M118 183c33-26 67-36 103-34 25 1 48 12 74 22 30 11 58 15 88 7-35 22-74 25-112 10-28-11-48-26-79-27-27-1-49 7-74 22Z" fill="#1F1723" stroke="#fff" stroke-width="2"/>
+    <path d="M121 186c38-27 71-34 104-29 24 4 47 16 70 24-42-5-66-20-96-19-27 1-51 9-78 24Z" fill="url(#loop-light)"/>
+  </g>
+
+  <!-- The high contrast serif wordmark -->
+  <g filter="url(#small-shadow)" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="700" paint-order="stroke fill">
+    <text x="30" y="252" fill="#fff" stroke="#2B2630" stroke-width="1.2" font-size="75" letter-spacing="-5">Learn</text>
+    <text x="309" y="250" fill="#fff" stroke="#2B2630" stroke-width="1.2" font-size="75" letter-spacing="-5">Step</text>
+    <text x="224" y="282" fill="url(#number)" stroke="#260035" stroke-width="3" font-size="115" font-weight="700" letter-spacing="-8">2</text>
+    <text x="489" y="209" fill="#fff" stroke="#211728" stroke-width=".5" font-family="Arial, sans-serif" font-size="18" font-style="normal">®</text>
+  </g>
+
+  <!-- Tapered gold underline -->
+  <path d="M82 300c27-19 56-31 84-34 46-5 82 16 126 22 38 6 77 0 123-15-27 21-62 32-100 35-59 5-105-18-150-24-27-4-51 0-83 16Z" fill="#241A26" stroke="#1A131D" stroke-width="2"/>
+  <path d="M86 295c26-17 52-26 79-27 44-1 82 18 124 23 39 5 77-1 119-13-31 18-64 26-100 28-55 2-101-19-145-24-26-3-50 1-77 13Z" fill="url(#gold)"/>
+  <path d="M103 286c25-12 47-16 70-15 42 2 79 19 119 23" stroke="#FFF0A1" stroke-width="2" stroke-linecap="round" opacity=".9"/>
+</svg>

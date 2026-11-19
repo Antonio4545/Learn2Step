@@ -1,0 +1,70 @@
+<ion-header class="radio-header">
+  <ion-toolbar>
+    <a class="header-action" routerLink="/home" aria-label="Back to Home"><ion-icon name="chevron-back"></ion-icon></a>
+    <h1>Learn 2 Step Radio</h1>
+    <button class="header-action" type="button" [attr.aria-label]="isFavorite() ? 'Remove from favorites' : 'Add to favorites'" (click)="toggleFavorite()">
+      <ion-icon [name]="isFavorite() ? 'heart' : 'heart-outline'"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main class="radio-content">
+    @if (loadError()) {
+      <p class="radio-error" role="status">{{ loadError() }}</p>
+    }
+    @if (widgetUrl(); as playerUrl) {
+      <iframe #soundcloudFrame class="soundcloud-frame" [src]="playerUrl" title="Learn 2 Step Radio SoundCloud player" allow="autoplay" loading="lazy"></iframe>
+    }
+    <audio
+      #radioPlayer
+      class="radio-audio"
+      [src]="currentTrack()?.stream_url || null"
+      preload="metadata"
+      (timeupdate)="onAudioTimeUpdate()"
+      (loadedmetadata)="onAudioMetadataLoaded()"
+      (waiting)="onAudioWaiting()"
+      (canplay)="onAudioCanPlay()"
+      (ended)="onAudioEnded()"
+      (error)="loadError.set('This SoundCloud audio stream is unavailable.'); isBuffering.set(false)"
+      aria-label="SoundCloud radio audio player"
+    ></audio>
+    <section class="station-artwork" aria-label="Learn 2 Step Radio station artwork">
+      <img class="artwork-image" src="assets/radio-artwork.svg" alt="Purple city skyline and a couple dancing" />
+      <div class="artwork-brand"><app-learn2step-logo [width]="194" [height]="122" /><span>RADIO</span></div>
+      <p class="artwork-tagline">The Soundtrack for Steppers</p>
+    </section>
+
+    <section class="track-info" aria-label="Current track">
+      <p class="eyebrow">Now Playing</p>
+      <h2>{{ trackTitle }}</h2>
+      <p class="artist">{{ artist }}</p>
+    </section>
+
+    <section class="player-controls" aria-label="Radio playback controls">
+      <div class="progress-meta"><span>{{ currentTimeLabel }}</span><span>{{ durationLabel }}</span></div>
+      <input class="progress-slider" type="range" min="0" [max]="durationSeconds / 1000" step="1" [ngModel]="currentSeconds" (ngModelChange)="seekTo($event)" [style.--progress]="progressPercent" aria-label="Track progress" [disabled]="!durationSeconds" />
+      <div class="control-row">
+        <button class="secondary-control" [class.selected]="isShuffle()" type="button" aria-label="Shuffle" (click)="toggleShuffle()"><ion-icon name="shuffle"></ion-icon></button>
+        <button class="secondary-control" type="button" aria-label="Previous track" (click)="previousTrack()"><ion-icon name="play-skip-back"></ion-icon></button>
+        <button class="main-control" type="button" [attr.aria-label]="isPlaying() ? 'Pause' : 'Play'" [disabled]="!soundCloudData().length" (click)="togglePlayback()">
+          @if (isBuffering()) { <ion-spinner name="crescent" aria-label="Loading audio"></ion-spinner> }
+          @else { <ion-icon [name]="isPlaying() ? 'pause' : 'play'"></ion-icon> }
+        </button>
+        <button class="secondary-control" type="button" aria-label="Next track" (click)="nextTrack()"><ion-icon name="play-skip-forward"></ion-icon></button>
+        <button class="secondary-control" [class.selected]="isRepeat()" type="button" aria-label="Repeat" (click)="toggleRepeat()"><ion-icon name="repeat"></ion-icon></button>
+      </div>
+      <button class="playlist-button" type="button" (click)="openPlaylist()"><ion-icon name="musical-notes"></ion-icon><span>Radio Playlist</span><ion-icon class="playlist-chevron" name="chevron-forward"></ion-icon></button>
+    </section>
+  </main>
+</ion-content>
+
+<ion-footer class="bottom-footer">
+  <nav class="tab-bar" aria-label="Main navigation">
+    <a class="tab-item" routerLink="/home"><ion-icon name="home"></ion-icon><span>Home</span></a>
+    <a class="tab-item" routerLink="/videos"><ion-icon name="play-circle"></ion-icon><span>Videos</span></a>
+    <a class="tab-item" routerLink="/vip"><ion-icon name="ribbon-outline"></ion-icon><span>VIP</span></a>
+    <a class="tab-item active" routerLink="/radio" aria-current="page"><ion-icon name="radio"></ion-icon><span>Radio</span></a>
+    <a class="tab-item" routerLink="/profile"><ion-icon name="person"></ion-icon><span>Profile</span></a>
+  </nav>
+</ion-footer>

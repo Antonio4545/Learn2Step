@@ -1,2 +1,38 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+
+:root {
+  --vip-purple: #5b2c83;
+  --vip-purple-dark: #301448;
+  --vip-purple-mid: #482263;
+  --vip-purple-deep: #241035;
+  --vip-gold: #d4af37;
+  --vip-gold-shadow: #d4af3766;
+  --vip-gold-ink: #493400;
+  --vip-ink: #28232d;
+  --vip-filter-ink: #45404a;
+  --vip-muted: #85808a;
+  --vip-border: #e9e5eb;
+  --vip-filter-border: #dcd7e0;
+  --vip-surface: #ffffff;
+  --vip-page: #fbfafc;
+  --vip-hero-gradient: linear-gradient(135deg, var(--vip-purple-mid) 0%, var(--vip-purple-dark) 58%, var(--vip-purple-deep) 100%);
+  --vip-hero-overlay: #17111c45;
+  --vip-duration-overlay: #16121bbd;
+  --vip-shadow-soft: 0 2px 8px #261b3210;
+  --vip-shadow-card: 0 5px 18px #241c2b12;
+  --vip-shadow-footer: 0 -3px 12px #2514340a;
+
+  --onboarding-purple: #5b2c83;
+  --onboarding-stepping-lilac: #b37feb;
+  --onboarding-white: #ffffff;
+  --onboarding-dark: #100b15;
+  --onboarding-text-shadow: #0009;
+  --onboarding-skip-shadow: #0008;
+  --onboarding-dot-muted: #ffffff75;
+  --onboarding-overlay-top: #120c1b00;
+  --onboarding-overlay-middle: #120c1b36;
+  --onboarding-overlay-bottom: #100b15f2;
+  --onboarding-glow: #b37feb66;
+  --onboarding-button-shadow: 0 8px 24px #0b061888;
+}

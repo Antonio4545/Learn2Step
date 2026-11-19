@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true" [scrollY]="false">
+  <main class="onboarding-screen">
+    <!-- TODO: Replace the remote placeholder with the approved full-bleed dancing-couple image. -->
+    <div class="background-photo" role="img" aria-label="A couple dancing together"></div>
+    <div class="background-gradient" aria-hidden="true"></div>
+
+    <button class="skip-button" type="button">Skip</button>
+
+    <section class="hero-copy" aria-labelledby="onboarding-title">
+      <h1 id="onboarding-title">Master the Art of<br /><span>Stepping</span></h1>
+      <p>Learn Chicago-Style Stepping, Two-Step, and social dance from real instructors and the culture that built it.</p>
+    </section>
+
+    <div class="pagination" aria-label="Slide 1 of 3">
+      <span class="active"></span><span></span><span></span>
+    </div>
+
+    <button class="get-started-button" type="button" (click)="onGetStarted()">
+      <span>Get Started</span><ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+    </button>
+  </main>
+</ion-content>

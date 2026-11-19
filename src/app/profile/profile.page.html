@@ -1,0 +1,56 @@
+<ion-header class="profile-header">
+  <ion-toolbar>
+    <button class="header-action" type="button" aria-label="Open menu" (click)="openMenu()"><ion-icon name="menu-outline"></ion-icon></button>
+    <h1>Profile</h1>
+    <button class="header-action settings-action" type="button" aria-label="Settings" (click)="openSettings()"><ion-icon name="settings-outline"></ion-icon></button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main class="profile-content">
+    <section class="profile-identity" aria-label="Profile information">
+      <div class="identity-art" aria-hidden="true"></div>
+      <div class="avatar-column">
+        <div class="avatar-wrap">
+          <img *ngIf="avatar; else avatarInitials" [src]="avatar" [alt]="displayName + ' profile photo'" />
+          <ng-template #avatarInitials><span class="avatar-initials" aria-label="Profile photo not set">{{ displayName.slice(0, 1).toUpperCase() }}</span></ng-template>
+          <label class="camera-badge" [class.uploading]="photoUploading()" for="avatar-upload" [attr.aria-label]="photoUploading() ? 'Saving profile picture' : 'Change profile picture'"><ion-icon name="camera"></ion-icon></label>
+          <input id="avatar-upload" class="avatar-input" type="file" accept="image/jpeg,image/png,image/webp,image/gif" [disabled]="photoUploading()" (change)="updateAvatar($event)" />
+        </div>
+      </div>
+      <div class="identity-details">
+        <h2>{{ displayName }}</h2>
+        <p class="profile-email" *ngIf="profile() as user">{{ user.email }}</p>
+        <p class="location"><ion-icon name="location"></ion-icon>{{ profile()?.location || 'Location not provided' }}</p>
+        <span class="vip-badge" *ngIf="profile()?.isVip"><ion-icon name="trophy"></ion-icon>VIP Member</span>
+        <p class="member-since">{{ profileLoading() ? 'Loading account…' : 'Member since ' + (profile()?.memberSince || '—') }}</p>
+        <p class="photo-status" *ngIf="photoUploading()" aria-live="polite">Saving photo…</p>
+      </div>
+    </section>
+
+    <p class="profile-error" *ngIf="profileError()" role="alert">{{ profileError() }} <button type="button" (click)="loadProfile()">Retry</button></p>
+
+    <section class="stats-card" aria-label="Profile statistics">
+      <div class="stat"><strong>—</strong><span>Videos Saved</span></div>
+      <div class="stat"><strong>—</strong><span>Learning Progress</span></div>
+      <div class="stat"><strong>—</strong><span>Playlists</span></div>
+    </section>
+
+    <nav class="profile-menu" aria-label="Profile sections">
+      <button type="button" (click)="openProfileAction('Saved Videos')"><ion-icon class="row-icon" name="play"></ion-icon><span>Saved Videos</span><ion-icon class="row-chevron" name="chevron-forward"></ion-icon></button>
+      <button type="button" (click)="openProfileAction('My Learning Progress')"><ion-icon class="row-icon" name="bar-chart"></ion-icon><span>My Learning Progress</span><ion-icon class="row-chevron" name="chevron-forward"></ion-icon></button>
+      <button type="button" (click)="openProfileAction('Favorite Instructors')"><ion-icon class="row-icon" name="heart"></ion-icon><span>Favorite Instructors</span><ion-icon class="row-chevron" name="chevron-forward"></ion-icon></button>
+      <button type="button" (click)="openProfileAction('My Posts & Activity')"><ion-icon class="row-icon" name="people"></ion-icon><span>My Posts &amp; Activity</span><ion-icon class="row-chevron" name="chevron-forward"></ion-icon></button>
+    </nav>
+  </main>
+</ion-content>
+
+<ion-footer class="bottom-footer">
+  <nav class="tab-bar" aria-label="Main navigation">
+    <a class="tab-item" routerLink="/home"><ion-icon name="home"></ion-icon><span>Home</span></a>
+    <a class="tab-item" routerLink="/videos"><ion-icon name="play-circle"></ion-icon><span>Videos</span></a>
+    <a class="tab-item" routerLink="/vip"><ion-icon name="ribbon-outline"></ion-icon><span>VIP</span></a>
+    <a class="tab-item" routerLink="/radio"><ion-icon name="radio-outline"></ion-icon><span>Radio</span></a>
+    <a class="tab-item active" routerLink="/profile" aria-current="page"><ion-icon name="person"></ion-icon><span>Profile</span></a>
+  </nav>
+</ion-footer>

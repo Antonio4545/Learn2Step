@@ -1,0 +1,33 @@
+<ion-header class="videos-header">
+  <ion-toolbar>
+    <a class="header-action" routerLink="/home" aria-label="Back to Dance Community"><ion-icon name="chevron-back"></ion-icon></a>
+    <h1>Videos</h1>
+    <button class="header-action" type="button" aria-label="Search videos" (click)="documentSearch.focus()"><ion-icon name="search"></ion-icon></button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main class="videos-content">
+    <label class="search-field">
+      <ion-icon name="search" aria-hidden="true"></ion-icon>
+      <input #documentSearch type="search" [(ngModel)]="searchTerm" placeholder="Search videos, lessons, or instructors" aria-label="Search videos, lessons, or instructors" />
+    </label>
+    <nav class="filter-row" aria-label="Filter videos">
+      <app-filter-chip *ngFor="let filter of filters" [label]="filter" [active]="filter === activeFilter" (selected)="setFilter($event)" />
+    </nav>
+    <section class="video-list" aria-label="Videos">
+      <app-video-list-item *ngFor="let video of filteredVideos" [video]="video" (opened)="openVideo($event)" (menu)="openMenu($event)" />
+      <p class="empty-state" *ngIf="filteredVideos.length === 0">No videos match your search.</p>
+    </section>
+  </main>
+</ion-content>
+
+<ion-footer class="bottom-footer">
+  <nav class="tab-bar" aria-label="Main navigation">
+    <a class="tab-item" routerLink="/home"><ion-icon name="home"></ion-icon><span>Home</span></a>
+    <a class="tab-item active" routerLink="/videos" aria-current="page"><ion-icon name="play-circle"></ion-icon><span>Videos</span></a>
+    <a class="tab-item" routerLink="/vip"><ion-icon name="ribbon-outline"></ion-icon><span>VIP</span></a>
+    <a class="tab-item" routerLink="/radio"><ion-icon name="radio-outline"></ion-icon><span>Radio</span></a>
+    <a class="tab-item" routerLink="/profile"><ion-icon name="person-outline"></ion-icon><span>Profile</span></a>
+  </nav>
+</ion-footer>

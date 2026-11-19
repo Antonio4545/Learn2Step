@@ -1,0 +1,14 @@
+:host { display: block; flex: 0 0 auto; }
+button {
+  min-height: 36px;
+  padding: 7px 16px;
+  border: 1px solid var(--vip-filter-border);
+  border-radius: 999px;
+  color: var(--vip-filter-ink);
+  background: var(--vip-surface);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+button.active { border-color: var(--vip-purple); color: var(--vip-surface); background: var(--vip-purple); }

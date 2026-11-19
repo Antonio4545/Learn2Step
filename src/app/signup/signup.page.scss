@@ -1,0 +1,250 @@
+:host {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  color: var(--vip-ink);
+}
+
+.signup-header {
+  z-index: 1;
+  box-shadow: var(--vip-shadow-soft);
+}
+
+.signup-header ion-toolbar {
+  --background: var(--vip-surface);
+  --min-height: 56px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  position: relative;
+}
+
+.signup-header ion-title {
+  color: var(--vip-purple);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+}
+
+.back-link {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 16px;
+  padding: 8px 4px;
+  color: var(--vip-purple);
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  transform: translateY(-50%);
+}
+
+ion-content {
+  --background: var(--vip-page);
+}
+
+.signup-shell {
+  width: min(100%, 540px);
+  margin-inline: auto;
+  padding: 28px 20px 40px;
+}
+
+.signup-card {
+  padding: 25px 22px;
+  border: 1px solid var(--vip-border);
+  border-radius: 20px;
+  background: var(--vip-surface);
+  box-shadow: var(--vip-shadow-card);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--vip-purple);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.25px;
+}
+
+h1 {
+  margin: 0;
+  color: var(--vip-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(27px, 7vw, 34px);
+  letter-spacing: -0.7px;
+  line-height: 1.12;
+}
+
+.intro {
+  margin: 10px 0 23px;
+  color: var(--vip-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.setup-note,
+.form-error,
+.form-success {
+  margin: 0 0 16px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.setup-note {
+  color: #60470a;
+  background: #fff7dc;
+}
+
+.form-error {
+  color: #9e2e3d;
+  background: #fff0f2;
+}
+
+.form-success {
+  color: #216746;
+  background: #eaf7ef;
+}
+
+.field-group {
+  margin: 0 0 16px;
+}
+
+.field-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--vip-ink);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.field-group input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #d9d3df;
+  border-radius: 10px;
+  outline: none;
+  color: var(--vip-ink);
+  background: var(--vip-surface);
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.field-group input:focus-visible {
+  border-color: var(--vip-purple);
+  box-shadow: 0 0 0 3px #5b2c8326;
+}
+
+.field-group input.ng-invalid.ng-touched {
+  border-color: #b84454;
+}
+
+.field-hint,
+.field-error {
+  margin: 5px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.field-hint {
+  color: var(--vip-muted);
+}
+
+.field-error {
+  color: #a52d3d;
+}
+
+.strength-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 7px;
+  color: var(--vip-muted);
+  font-size: 10px;
+}
+
+.strength-meter {
+  display: flex;
+  width: 76px;
+  gap: 3px;
+}
+
+.strength-meter span {
+  height: 4px;
+  flex: 1;
+  border-radius: 4px;
+  background: var(--vip-border);
+}
+
+.strength-meter[data-level='1'] span:first-child {
+  background: #cf7b43;
+}
+
+.strength-meter[data-level='2'] span:nth-child(-n + 2) {
+  background: #d1a43a;
+}
+
+.strength-meter[data-level='3'] span {
+  background: #38835c;
+}
+
+.submit-button {
+  display: flex;
+  width: 100%;
+  min-height: 49px;
+  margin-top: 6px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  color: var(--vip-surface);
+  background: var(--vip-purple);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 750;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.submit-button:focus-visible,
+.back-link:focus-visible,
+.login-prompt a:focus-visible {
+  outline: 3px solid #8e62b6;
+  outline-offset: 3px;
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.login-prompt {
+  margin: 18px 0 0;
+  color: var(--vip-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.login-prompt a {
+  color: var(--vip-purple);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.login-prompt span {
+  color: var(--vip-ink);
+}
+
+@media (min-width: 700px) {
+  .signup-shell {
+    padding-top: 42px;
+  }
+}

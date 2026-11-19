@@ -1,21 +1,66 @@
-<ion-header [translucent]="true">
+<ion-header class="app-header">
   <ion-toolbar>
-    <ion-title> Blank </ion-title>
+    <button class="header-action" aria-label="Menu" type="button"><ion-icon name="menu-outline"></ion-icon></button>
+    <app-learn2step-logo class="wordmark" [width]="108" [height]="62" />
+    <button class="header-action notification" aria-label="Notifications" type="button"><ion-icon name="notifications-outline"></ion-icon></button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="false">
+  <main class="home-content">
+    <section class="hero" aria-label="Your dance community">
+      <!-- TODO: Replace this remote placeholder with the approved hero dance photo. -->
+      <div class="hero-photo"></div>
+      <div class="hero-copy">
+        <h1>Your Dance</h1>
+        <div class="hero-community">Community<span class="flourish"></span></div>
+        <p>Learn <i>•</i> Watch <i>•</i> Listen <i>•</i> Connect</p>
+      </div>
+      <div class="pagination" aria-label="Slide 1 of 3"><span class="selected"></span><span></span><span></span></div>
+    </section>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a>
-    </p>
-  </div>
+    @if (!account.isLoggedIn()) {
+      <div class="auth-actions" aria-label="Account actions">
+        <a class="create-account-cta" routerLink="/create-account" aria-label="Create an account with Learn 2 Step">Create Account</a>
+        <a class="login-cta" routerLink="/login" aria-label="Log in to your account">Log In</a>
+      </div>
+    } @else {
+      <button class="signout-cta" type="button" (click)="signOut()">Sign Out</button>
+      @if (signOutError) {
+        <p class="signout-error" role="alert">{{ signOutError }}</p>
+      }
+    }
+
+    <section class="action-tiles" aria-label="Explore">
+      <button class="action-tile" type="button" routerLink="/videos"><ion-icon name="play-circle-outline"></ion-icon><span>Watch<br />Videos</span></button>
+      <button class="action-tile" type="button" routerLink="/radio"><ion-icon name="radio-outline"></ion-icon><span>Listen to<br />Radio</span></button>
+      <button class="action-tile" type="button" routerLink="/vip"><ion-icon name="ribbon-outline"></ion-icon><span>VIP<br />Lessons</span></button>
+    </section>
+
+    <section class="community-section">
+      <div class="section-heading"><h2>Community Wall</h2><button type="button">See All</button></div>
+      <article class="feed-card">
+        <header class="post-header">
+          <div class="avatar" aria-hidden="true">S</div>
+          <div class="post-author"><strong>StepKingD</strong><span>2h ago</span></div>
+          <button class="post-menu" aria-label="More post options" type="button"><ion-icon name="ellipsis-vertical"></ion-icon></button>
+        </header>
+        <p class="post-copy">Great set at the Steppers Lounge last night! The energy was real 🔥 Who's stepping this weekend?</p>
+        <!-- TODO: Replace this remote placeholder with an approved community post photo. -->
+        <div class="feed-photo" role="img" aria-label="Dancers at a community event"></div>
+      </article>
+    </section>
+  </main>
+
+  <button class="compose-fab" aria-label="Create a post" type="button"><ion-icon name="add"></ion-icon></button>
 </ion-content>
+
+<ion-footer class="bottom-footer">
+  <nav class="tab-bar" aria-label="Main navigation">
+    <button class="tab-item active" aria-current="page" type="button"><ion-icon name="home"></ion-icon><span>Home</span></button>
+    <button class="tab-item" type="button" routerLink="/videos"><ion-icon name="play-circle-outline"></ion-icon><span>Videos</span></button>
+    <button class="tab-item" type="button" routerLink="/vip"><ion-icon name="ribbon-outline"></ion-icon><span>VIP</span></button>
+    <button class="tab-item" type="button" routerLink="/radio"><ion-icon name="radio-outline"></ion-icon><span>Radio</span></button>
+    <button class="tab-item" type="button" routerLink="/profile"><ion-icon name="person-outline"></ion-icon><span>Profile</span></button>
+  </nav>
+</ion-footer>

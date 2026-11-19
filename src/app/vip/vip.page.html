@@ -1,0 +1,43 @@
+<ion-header class="vip-header">
+  <ion-toolbar>
+    <a class="header-action" routerLink="/home" aria-label="Back to Home"><ion-icon name="chevron-back"></ion-icon></a>
+    <app-learn2step-logo class="wordmark" [width]="108" [height]="62" />
+    <button class="header-action" type="button" aria-label="Search lessons" (click)="onSearchTap()"><ion-icon name="search"></ion-icon></button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main class="vip-content">
+    <section class="vip-hero">
+      <svg class="hero-crown" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 19H5L3 8.5Z"/><path d="M5 21h14"/></svg>
+      <h1>VIP 2 Step Lessons</h1>
+      <p>Premium video lessons, in-depth breakdowns and exclusive training from top instructors.</p>
+    </section>
+
+    <nav class="filter-row" aria-label="Filter lessons">
+      <button *ngFor="let filter of filters" type="button" [class.active]="filter === 'All'" (click)="onFilterTap(filter)">{{ filter }}</button>
+    </nav>
+
+    <section class="lesson-list" aria-label="VIP video lessons">
+      <article class="lesson-card" *ngFor="let lesson of lessons">
+        <div class="thumbnail-wrap">
+          <img [src]="lesson.image" [alt]="lesson.title + ' lesson preview'" />
+          <span class="duration">{{ lesson.duration }}</span>
+          <span class="lock-overlay" *ngIf="lesson.isLocked" aria-label="Locked lesson"><ion-icon name="lock-closed"></ion-icon></span>
+        </div>
+        <div class="lesson-detail">
+          <h2>{{ lesson.title }}</h2>
+          <p>{{ lesson.instructor }}</p>
+        </div>
+        <div class="lesson-meta">
+          <button type="button" aria-label="More lesson options"><ion-icon name="ellipsis-vertical"></ion-icon></button>
+          <span class="vip-badge">VIP</span>
+        </div>
+      </article>
+    </section>
+  </main>
+</ion-content>
+
+<ion-footer class="unlock-footer">
+  <button class="unlock-button" type="button" (click)="onUnlockTap()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 19H5L3 8.5Z"/><path d="M5 21h14"/></svg><span>Unlock This Video</span></button>
+</ion-footer>

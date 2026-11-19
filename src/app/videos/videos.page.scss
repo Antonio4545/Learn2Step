@@ -1,0 +1,24 @@
+:host { display: flex; height: 100%; flex-direction: column; color: var(--vip-ink); }
+.videos-header { z-index: 2; box-shadow: var(--vip-shadow-soft); }
+.videos-header ion-toolbar { --background: var(--vip-surface); --min-height: 54px; --padding-start: 18px; --padding-end: 18px; position: relative; }
+.videos-header h1 { position: absolute; top: 50%; left: 50%; margin: 0; color: var(--vip-ink); font-size: 18px; font-weight: 750; transform: translate(-50%, -50%); }
+.header-action { position: relative; z-index: 1; display: grid; width: 32px; height: 36px; place-items: center; padding: 0; border: 0; color: var(--vip-ink); background: transparent; text-decoration: none; }
+.header-action:last-child { margin-left: auto; }
+.header-action ion-icon { font-size: 23px; }
+ion-content { --background: var(--vip-page); }
+.videos-content { width: min(100%, 720px); margin-inline: auto; padding: 18px 18px 24px; }
+.search-field { display: flex; min-height: 46px; align-items: center; gap: 10px; padding: 0 14px; border: 1px solid var(--vip-border); border-radius: 13px; color: var(--vip-muted); background: #f3f1f4; }
+.search-field ion-icon { flex: 0 0 auto; font-size: 19px; }
+.search-field input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--vip-ink); background: transparent; font: inherit; font-size: 13px; }
+.search-field input::placeholder { color: var(--vip-muted); opacity: 1; }
+.filter-row { display: flex; overflow-x: auto; gap: 9px; margin: 16px -18px 13px; padding: 0 18px 2px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.filter-row::-webkit-scrollbar { display: none; }
+.video-list { display: flex; flex-direction: column; }
+.empty-state { padding: 22px 0; color: var(--vip-muted); font-size: 13px; text-align: center; }
+.bottom-footer { border-top: 1px solid var(--vip-border); background: var(--vip-surface); }
+.tab-bar { display: flex; width: min(100%, 720px); height: calc(62px + env(safe-area-inset-bottom)); margin-inline: auto; align-items: center; justify-content: space-around; padding: 0 8px env(safe-area-inset-bottom); background: var(--vip-surface); }
+.tab-item { display: flex; min-width: 52px; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 8px 0; color: var(--vip-muted); text-decoration: none; }
+.tab-item ion-icon { font-size: 21px; }
+.tab-item span { font-size: 9px; font-weight: 600; }
+.tab-item.active { color: var(--vip-purple); }
+@media (min-width: 700px) { .videos-content { padding-top: 24px; } }
